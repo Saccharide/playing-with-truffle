@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Voting Contract</h1>
+          <form id="setData">
+            <div class="form-group">
+              <input id="candidate-name" type="text" class="form-control"></input>
+            </div>
+            <button id="vote" type="submit" class="btn btn-primary">Vote</button>
+            <button id="closeVote" type="submit" class="btn btn-primary">Close Vote</button>
+            <button id="openVote" type="submit" class="btn btn-primary">Open Vote</button>
+          </form>
+          <div>Winner: <span id="winner"></span></div>
+          <div>Number of votes: <span id="max-votes"></span></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

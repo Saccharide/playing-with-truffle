@@ -1,0 +1,14 @@
+{
+  "name": "playing-with-truffle",
+  "version": "1.0.0",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "static-server public"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
