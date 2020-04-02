@@ -1,12 +1,9 @@
 
-
+# Notes
 * Testing and developing smart contract with `truffle`, written with `solidity`
 * `truffle` is written in `NodeJS`
 * To interact with smart contract, we use `web3` to interface with it.
-* Compile and Deploy a contract
-```
-truffle migrate
-```
+* Compile and Deploy a contract: `truffle migrate`
 
 
 
@@ -20,10 +17,12 @@ const SimpleSmartContract = artifacts.require('SimpleSmartContract');
 // Each contract block is a different smart contract object and will be independent from another object
 contract('SimpleSmartContract', () => {
         it('Description of the first test: Deployment', async () => {
-        // Create an contract instance, waiting for the returned promised,
-        // the artifact object has a `deployed()` method that will return you the deployed
-        // instance of the smart contract.
 
+        /*
+            Create an contract instance, waiting for the returned promised,
+            the artifact object has a `deployed()` method that will return you the deployed
+            instance of the smart contract.
+        */
         const simpleSmartContract = await SimpleSmartContract.deployed();
         console.log(SimpleSmartContract.address);
 
@@ -36,13 +35,17 @@ contract('SimpleSmartContract', () => {
 
 5. create `2_simple_smart_contract.js` under `migration/` to migrate your smart contract. Sample migration file
 ```javascript
-// Artifact is an object that is injected by `truffle`, it represents all the compiled smart contract that are in the `build/`
-// compiled by truffle, with this artifacts object we can pass in the name of a smart contract and return a contract artifact.
+/*
+    Artifact is an object that is injected by `truffle`, it represents all the compiled
+    smart contract that are in the `build/` compiled by truffle, with this artifacts object
+    we can pass in the name of a smart contract and return a contract artifact.
+*/
 const SimpleSmartContract = artifacts.require('SimpleSmartContract');
 
-// Each migration needs to export a function, and this function will be given a deployer object, and this delpyer object will 
-// have a deploy method and takes in a contract artifacts created above.
-
+/*
+    Each migration needs to export a function, and this function will be given a deployer object,
+    and this delpyer object will have a deploy method and takes in a contract artifacts created above.
+*/
 module.exports = function(deployer) {
     deployer.deploy(SimpleSmartContract);
 }
@@ -74,12 +77,12 @@ var contractAddress =;
 
 // Make sure to load web3 before this javascript file
 
-// Create a Web3 instance, it takes in an URL to our local blockchain development instance started by `ganache`, 
-// can be found in truffle consle
+// Create a Web3 instance, it takes in an URL to our local blockchain development instance
+// started by `ganache`, can be found in truffle console
 var web3 = new Webs('http://localhost:9545');
 
-// Create an instance so that we can talk to our smart contract, we can use web3 to do that, it first takes contractABI,
-// and then the contract address.
+// Create an instance so that we can talk to our smart contract, we can use web3 to do that,
+// it first takes contractABI, and then the contract address.
 var simpleSmartContract = new web3.eth.Contract(contractABI, contractAddress);
 
 // Simple log to see our contract
