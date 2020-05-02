@@ -30,12 +30,11 @@ contract('SimpleSmartContract', () => {
     });
 });
 ```
-* Then we can test this with `truffle test`
+* We can run the test file with `truffle test`
 
 **THIS IS A MUST HAVE FILE IN ORDER TO INTERACT WITH CONTRACT**
-5. create `2_simple_smart_contract.js` under `migration/` to migrate your smart contract. 
 
-6. Sample migration file
+5. create `2_simple_smart_contract.js` under `migration/` to migrate your smart contract. 
 ```javascript
 /*
     Artifact is an object that is injected by `truffle`, it represents all the compiled
@@ -55,7 +54,6 @@ module.exports = function(deployer) {
 6. Then we can run `truffle develop`, which will do two things.
     - First, it will start the local development blockchain using the library `ganache`, and generate 10 ethereum addresses
     - Second, it will start a console that allows you to interact with the blockchain.
-    - We can then run the command `migrate`
 
 7. `migrate` command does the following two things: (can use the `--reset` flag to clear the `build/`)
     - First, it will compile our smart contract inside `contract/`, and then create a `build/` and put the contract artifact inside this directory.
@@ -75,7 +73,7 @@ module.exports = function(deployer) {
 ```javascript
 // First grab the corresponding `ABI` from the `build/contracts/`
 var contractABI = [];
-// Found in the truffle console after running `migrate --reset`
+// Contract address can be found in the truffle console after running `migrate --reset`
 var contractAddress = 0x0;
 
 // Make sure to load web3 before this javascript file
