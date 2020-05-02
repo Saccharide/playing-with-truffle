@@ -36,7 +36,7 @@ var contractABI = [
       "type": "function"
     }
 ];
-const contractAddress = '0xc48C09B54AF1bC06A2B7fEC561C8f8ad691B34b5';
+const contractAddress = '0x460998D4751b114ebf66e015Bb307c802cbdE9E9';
 
 
 const web3 = new Web3('http://localhost:9545');

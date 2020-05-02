@@ -10,8 +10,7 @@
 # Work flow of deploying a smart contract
 1. `truffle init .` to create an empty truffle project in the current directory
 2. All smart contracts are inside `contracts/` directory
-3. `migrations/` we need migration to deploy our smart contract
-4. `test/` are test file for smart contract, this can be in `js` or `solidity`, sample test code:
+3. `migrations/` we can deploy our smart contract by creating a javascript file `2_simple_contract`.  4. `test/` are test file for smart contract, this can be in `js` or `solidity`, sample test code:
 ```javascript
 const SimpleSmartContract = artifacts.require('SimpleSmartContract');
 // Each contract block is a different smart contract object and will be independent from another object
@@ -33,7 +32,10 @@ contract('SimpleSmartContract', () => {
 ```
 * Then we can test this with `truffle test`
 
-5. create `2_simple_smart_contract.js` under `migration/` to migrate your smart contract. Sample migration file
+**THIS IS A MUST HAVE FILE IN ORDER TO INTERACT WITH CONTRACT**
+5. create `2_simple_smart_contract.js` under `migration/` to migrate your smart contract. 
+
+6. Sample migration file
 ```javascript
 /*
     Artifact is an object that is injected by `truffle`, it represents all the compiled
@@ -60,6 +62,7 @@ module.exports = function(deployer) {
     - Second, it will deploy our smart contract by running all the migration files in our `migrations/`
 
 8. After running `migrate`, we can go to `build/contracts/` to see the artifacts of our smart contract. This will contain `ABI`, `address` of our contract. (and some other metadata). `ABI` is basically a set of functions that can interact with the outside world in JSON format
+
 ## Front End 
 0. Install `static-sever`, which is a `npm` package: `sudo npm install -g static-server`
 1. create a `public/` to be our front end of our DAPP
@@ -68,12 +71,12 @@ module.exports = function(deployer) {
 2. `index.html` is the default front end page of our front end
 3. `web3.js` is the javascript library that is used to interact with our smart contract.
 4. `bundle.js` will be our javascript code for our personalized front end. 
-5. Inside `bundle.js`, we 
+5. Inside `bundle.js`, we can interact with the backend as follows:
 ```javascript
 // First grab the corresponding `ABI` from the `build/contracts/`
 var contractABI = [];
-// Can grab this from the same place as above or can be found in the truffle console.
-var contractAddress =;
+// Found in the truffle console after running `migrate --reset`
+var contractAddress = 0x0;
 
 // Make sure to load web3 before this javascript file
 
